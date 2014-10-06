@@ -1,3 +1,4 @@
+import cmpFunc
 import shutil
 import string
 import subprocess
@@ -6,27 +7,7 @@ import threading
 import time
 import os
 
-#This functions extracts a function into a seperate module
-def createPythonModule(functionName,functionsFileName,moduleFileName):
-    inputFunctionsFile = open(functionsFileName);
-    inputFunctions = inputFunctionsFile.read();
-    inputFunctionsFile.close();
-    functionStartPos = string.find(inputFunctions,'def %s'%functionName);
-    if functionStartPos  ==  -1:
-        print 'Error! No function definition provided for %s.' %functionName
-        sys.exit()
-    functionEndPos = string.find(inputFunctions,'#END_DEF',functionStartPos)
-    if functionEndPos  == -1:
-        print 'Error! No #END_DEF provided after the definition of function %s.' %functionName
-        sys.exit()
-    functionDef = inputFunctions[functionStartPos:functionEndPos]
-    functionDef = functionDef.replace(functionName,'cmpFunc')
     
-    moduleFile = open(moduleFileName,'w')
-    moduleFile.write(functionDef)
-    moduleFile.close()
-    
-
 # subprocess command run with timeout support
 class Command(object):
     def __init__(self,cmd):
@@ -240,12 +221,10 @@ for student in studentList:
         cmpFile.write('\t%s\n'%cmd)
         studentSolnFilePath = '%s/%s/%s' %(buildDir,student,cmpCommandsDict[cmd])
         solnFilePath        = '%s/%s'    %(solnBuildDirPath,cmpCommandsDict[cmd])
-        createPythonModule(cmd,'cmpFunc.py','tmpModule.py')
-        import tmpModule
         # check if student file exists
         cmpResult = ''
         if os.path.isfile(studentSolnFilePath):
-            cmpResult = tmpModule.cmpFunc(studentSolnFilePath,solnFilePath)
+            cmpResult = getattr(cmpFunc,cmd)(studentSolnFilePath,solnFilePath);
         else:    
             cmpResult = 'FAIL. Student file does not exist.\n'
         cmpFile.write("\t\t%s\n"%cmpResult.replace('\n','\n\t\t'))

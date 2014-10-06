@@ -19,13 +19,16 @@ EXEC_COMMAND_1         = "cloc genepredict.py"
 EXEC_COMMAND_1_OUT     = "clocResult"
 EXEC_COMMAND_1_TIMEOUT = "100"
 
-
-EXEC_COMMAND_3         = ""
-EXEC_COMMAND_3_OUT     = ""
-EXEC_COMMAND_3_TIMEOUT = ""
+EXEC_COMMAND_2         = "python genepredict.py ../../../CME/trunk/CME211/Assignment1/S288C_reference_sequence_R64-1-1_20110203.fsa longSeq.orf"
+EXEC_COMMAND_2_OUT     = "longSeqSummary"
+EXEC_COMMAND_2_TIMEOUT = "100"
 
 
 # Comparison functions to be used on student submission
 CMP_COMMAND_1          = "Assignment1_2014_CMP_NumLines"
 CMP_COMMAND_1_FILE     = "clocResult"
+
+CMP_COMMAND_2          = "Assignment1_2014_CMP_ORF"
+CMP_COMMAND_2_FILE     = "longSeq.orf"
+
 

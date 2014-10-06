@@ -2,7 +2,6 @@
 #def myfunc(studentFileName,solnFileName,AdditionalData)
 #This function should always return a string summarizing the comparison result
 #Additional data is a structure which contains any additional data needed to comapre the two files
-#Always end a function definition with #END_DEF
 
 def Assignment1_2013_CMP_GenData(studentFileName,solnFileName,additionalData = None):
     import string
@@ -28,7 +27,7 @@ def Assignment1_2013_CMP_GenData(studentFileName,solnFileName,additionalData = N
     else:
         result += 'Failed\n'
     return result
-#END_DEF    
+
     
 def Assignment1_2013_CMP_ProccData(studentFileName,solnFileName,additionalData = None):
     import string
@@ -62,7 +61,7 @@ def Assignment1_2013_CMP_ProccData(studentFileName,solnFileName,additionalData =
     else:
         result += 'Failed\n'
     return result
-#END_DEF    
+
 
 def Assignment1_2014_CMP_NumLines(studentFileName,solnFileName,additionalData = None):
     import string
@@ -104,7 +103,7 @@ def Assignment1_2014_CMP_ORF(studentFileName,solnFileName,additionalData = None)
     match = True
     for i in range(len(solnLines)):
         if i >= len(studentLines):
-            result += "Result file is shorter than soln file.\n"
+            result += "Student file has %d lines while solution has %d lines.\n" %(len(studentLines),len(solnLines))
             break;
         if solnLines[i][0] != '>':
             if studentLines[i][0] != '>':
@@ -132,4 +131,4 @@ def Assignment1_2014_CMP_ORF(studentFileName,solnFileName,additionalData = None)
     else:
         result += "MATCH.\n"
     return result
-#END_DEF
+
