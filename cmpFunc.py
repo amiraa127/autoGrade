@@ -97,7 +97,7 @@ def Assignment1_2014_CMP_ORF(studentFileName,solnFileName,additionalData = None)
     solnLines = f_soln.readlines();
     studentHeader = studentLines[0];
     result = ""
-    if string.find(studentHeader,'S288C_reference_sequence_R64-1-1_20110203.fsa') < 0:
+    if string.find(studentHeader,'S288C_reference_sequence_R64-1-1_20110203.fsa') < 0 and string.find(studentHeader,'testseq1.fsa') < 0:
         result += "File does not include correct file name in the header.\n"
     match = True
     for i in range(len(solnLines)):

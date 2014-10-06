@@ -64,7 +64,7 @@ def getCmndList(configFileLines,inputLabel,IOLabel,requiredIO = False):
             else:
                 print 'Error! Config file missing required input/output file name for a command.'
                 sys.exit()
-        result[cmnd] = cmndIO
+        result[cmnd +'_'+str(cnt)] = cmndIO
         cnt += 1
         cmndStr = "%s_%d"%(inputLabel,cnt)
         cmnd = findInputInConfigFile(configFileLines,cmndStr)
@@ -159,8 +159,9 @@ sys.stdout.flush()
 
 timeOutDict = {}
 for cmd in execCommandsDict:
+    cmd_ = cmd[:string.rfind(cmd,'_')]
     start = time.time()
-    p = subprocess.Popen(string.split(cmd),cwd=solnBuildDirPath,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    p = subprocess.Popen(string.split(cmd_),cwd=solnBuildDirPath,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     p.wait();
     end = time.time()
     timeOutDict[cmd] = end - start;
@@ -188,10 +189,11 @@ for student in studentList:
     buildFile.write('-------------------------------------\n');
     buildFile.write('Student ID = %s\n'%student)
     for cmd in execCommandsDict:
+        cmd_ = cmd[:string.rfind(cmd,'_')]
         buildFile.write('************************\n')
-        buildFile.write('\t%s\n'%cmd)
+        buildFile.write('\t%s\n'%cmd_)
         testDirPath = '%s/%s' %(buildDir,student)
-        currCmd = Command(string.split(cmd));
+        currCmd = Command(string.split(cmd_));
         out,err = currCmd.run(testDirPath,float(timeOutParamDict[cmd]) * timeOutDict[cmd])
         if (len(execCommandsDict[cmd]) > 0):
             f = open('%s/%s' %(testDirPath,execCommandsDict[cmd]),'w')
@@ -217,14 +219,15 @@ for student in studentList:
     cmpFile.write('-------------------------------------\n');
     cmpFile.write('Student ID = %s\n'%student)
     for cmd in cmpCommandsDict:
+        cmd_ = cmd[:string.rfind(cmd,'_')]
         cmpFile.write('************************\n')
-        cmpFile.write('\t%s\n'%cmd)
+        cmpFile.write('\t%s\n'%cmd_)
         studentSolnFilePath = '%s/%s/%s' %(buildDir,student,cmpCommandsDict[cmd])
         solnFilePath        = '%s/%s'    %(solnBuildDirPath,cmpCommandsDict[cmd])
         # check if student file exists
         cmpResult = ''
         if os.path.isfile(studentSolnFilePath):
-            cmpResult = getattr(cmpFunc,cmd)(studentSolnFilePath,solnFilePath);
+            cmpResult = getattr(cmpFunc,cmd_)(studentSolnFilePath,solnFilePath);
         else:    
             cmpResult = 'FAIL. Student file does not exist.\n'
         cmpFile.write("\t\t%s\n"%cmpResult.replace('\n','\n\t\t'))

@@ -38,5 +38,3 @@ CMP_COMMAND_2_FILE     = "testSeq1.orf"
 
 CMP_COMMAND_3          = "Assignment1_2014_CMP_ORF"
 CMP_COMMAND_3_FILE     = "longSeq.orf"
-
-
