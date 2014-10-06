@@ -2,9 +2,9 @@
 #def myfunc(studentFileName,solnFileName,AdditionalData)
 #This function should always return a string summarizing the comparison result
 #Additional data is a structure which contains any additional data needed to comapre the two files
+import string
 
 def Assignment1_2013_CMP_GenData(studentFileName,solnFileName,additionalData = None):
-    import string
     result = ''
     solnFile = open(solnFileName)
     solnFileLines = solnFile.readlines()
@@ -30,7 +30,6 @@ def Assignment1_2013_CMP_GenData(studentFileName,solnFileName,additionalData = N
 
     
 def Assignment1_2013_CMP_ProccData(studentFileName,solnFileName,additionalData = None):
-    import string
     result = ''
     solnFile = open(solnFileName)
     solnFileLines = solnFile.readlines()
@@ -64,7 +63,7 @@ def Assignment1_2013_CMP_ProccData(studentFileName,solnFileName,additionalData =
 
 
 def Assignment1_2014_CMP_NumLines(studentFileName,solnFileName,additionalData = None):
-    import string
+
     f = open(studentFileName);
     lineCnt = 0;
     for line in f:
@@ -86,10 +85,10 @@ def Assignment1_2014_CMP_NumLines(studentFileName,solnFileName,additionalData = 
         result = "Number of lines = %d . Above limit - 8." % lineCnt
     
     return result
-#END_DEF
+
 
 def Assignment1_2014_CMP_ORF(studentFileName,solnFileName,additionalData = None):
-    import string
+    
     f_student = open(studentFileName)
     f_soln = open(solnFileName)
     studentLines = f_student.readlines();
