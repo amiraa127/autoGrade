@@ -1,0 +1,31 @@
+# Directory wehre all student repos are located
+STUDENTS_ROOT_DIR = "../Students"              
+
+# Directory where the current assignment is located within the student's repo
+ASSIGNMENT_DIR    = "CME211/Assignment1"
+
+# Directory where the solution to this specific assignment is located
+SOLUTION_DIR      = "../../CME/trunk/CME211/Assignment1"
+
+# Directory to write out the results of the automatic grading
+OUTPUT_DIR        = "../Assignment1_Summary"
+
+# Directory to build the projects 
+BUILD_DIR         = "../Assignment1_Build"
+
+# Commands to execute on the student submissions
+# These commands will also be executed on the sample submission
+EXEC_COMMAND_1         = "cloc genepredict.py"
+EXEC_COMMAND_1_OUT     = "clocResult"
+EXEC_COMMAND_1_TIMEOUT = "100"
+
+
+EXEC_COMMAND_3         = ""
+EXEC_COMMAND_3_OUT     = ""
+EXEC_COMMAND_3_TIMEOUT = ""
+
+
+# Comparison functions to be used on student submission
+CMP_COMMAND_1          = "Assignment1_2014_CMP_NumLines"
+CMP_COMMAND_1_FILE     = "clocResult"
+

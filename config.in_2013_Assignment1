@@ -1,0 +1,35 @@
+# Directory wehre all student repos are located
+STUDENTS_ROOT_DIR = "../practiceGrades"              
+
+# Directory where the current assignment is located within the student's repo
+ASSIGNMENT_DIR    = "CME211/Assignment1"
+
+# Directory where the solution to this specific assignment is located
+SOLUTION_DIR      = "../practiceGrades/Assignment1Solution"
+
+# Directory to write out the results of the automatic grading
+OUTPUT_DIR        = "../practiceGrades/autoGradeOutput"
+
+# Directory to build the projects 
+BUILD_DIR         = "../practiceGrades/build"
+
+# Commands to execute on the student submissions
+# These commands will also be executed on the sample submission
+EXEC_COMMAND_1         = "python generatedata.py"
+EXEC_COMMAND_1_OUT     = "genDataResults"
+EXEC_COMMAND_1_TIMEOUT = "100"
+
+EXEC_COMMAND_2         = "python processdata.py"
+EXEC_COMMAND_2_OUT     = "proccDataResults"
+EXEC_COMMAND_2_TIMEOUT = "10"
+
+EXEC_COMMAND_3         = ""
+EXEC_COMMAND_3_OUT     = ""
+
+
+# Comparison functions to be used on student submission
+CMP_COMMAND_1          = "Assignment1_2013_CMP_GenData"
+CMP_COMMAND_1_FILE     = "genDataResults"
+
+CMP_COMMAND_2          = "Assignment1_2013_CMP_ProccData"
+CMP_COMMAND_2_FILE     = "proccDataResults"
